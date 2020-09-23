@@ -2,7 +2,8 @@ module.exports = {
   siteMetadata: {
     title: `My first Gatsby Project`,
     description: `This my first site on Gatsby`,
-    author: `@andrewstepanets`,
+    author: `Andrew Stepanets`,
+    createdAt: 2020,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -11,6 +12,14 @@ module.exports = {
       options: {
         name: `images`,
         path: `${__dirname}/src/images`,
+      },
+    },
+    `gatsby-transformer-remark`,
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `pages`,
+        path: `${__dirname}/src/pages`,
       },
     },
     `gatsby-transformer-sharp`,
