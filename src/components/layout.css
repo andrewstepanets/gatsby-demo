@@ -488,9 +488,9 @@ dt {
 th {
   font-weight: bold;
 }
-li {
+/* li {
   margin-bottom: calc(1.45rem / 2);
-}
+} */
 ol li {
   padding-left: 0;
 }
@@ -610,4 +610,26 @@ pre tt:after {
 .navlink {
   color: white;
   text-decoration: none;
+}
+
+/* Netlify Identity */
+
+.netlify-identity-menu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+.netlify-identity-item:first-child {
+  margin-right: 10px;
+}
+.netlify-identity-signup {
+  color: white;
+}
+.netlify-identity-login {
+  color: white;
+}
+.netlify-identity-logout {
+  color: white;
 }
