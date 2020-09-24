@@ -4,6 +4,7 @@ const { createFilePath } =  require('gatsby-source-filesystem');
 
 const PostTemplate = path.resolve('./src/templates/post-template.js');
 const BlogTemplate = path.resolve('./src/templates/blog-template.js');
+const ProductTemplate = path.resolve('./src/templates/product-template.js');
 
 
 exports.onCreateNode = ({ node, getNode, actions }) => {
@@ -36,7 +37,15 @@ exports.createPages = async ({ graphql, actions }) => {
                                     }
                                 }
                             }
+                        allContentfulProduct {
+                            totalCount
+                            edges {
+                            node {
+                                slug
+                            }
+                            }
                         }
+                    }
     `)
     const posts = result.data.allMarkdownRemark.edges
 
@@ -69,6 +78,16 @@ exports.createPages = async ({ graphql, actions }) => {
                 isLastPage,
                 currentPage,
                 totalPages
+            }
+        })
+    })
+    const products = result.data.allContentfulProduct.edges
+    products.forEach(({ node: product }) => {
+        createPage({
+            path: `/products/${product.slug}`,
+            component: ProductTemplate,
+            context: {
+                slug: product.slug
             }
         })
     })
