@@ -4,3 +4,5 @@ date: "2020-09-10"
 ---
 
 The third post I've written.
+
+![Photo Of Beach](beach.jpg)
