@@ -5,7 +5,6 @@ import netlifyIdentity from 'netlify-identity-widget'
 
 
 import logoIcon from '../images/my-logo.png'
-import { render } from "react-dom"
 
 
 const isActive = ({ isCurrent }) => {
