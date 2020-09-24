@@ -5,6 +5,13 @@ import React from "react"
 
 import logoIcon from '../images/my-logo.png'
 
+
+const isActive = ({ isCurrent }) => {
+  return { className: isCurrent ? 'active' : 'navlink' }
+} 
+
+const NavLink = props => <Link getProps={isActive} {...props} />
+
 const Header = ({ siteTitle }) => (
   <header
     style={{
@@ -14,8 +21,10 @@ const Header = ({ siteTitle }) => (
   >
     <div
       style={{
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'space-between',
         margin: `0 auto`,
-        maxWidth: 960,
         padding: `1.45rem 1.0875rem`,
       }}
     >
@@ -26,16 +35,33 @@ const Header = ({ siteTitle }) => (
          }}>
         <img src={logoIcon} alt="My logo" style={{ width: '50px', margin: '0 20px 0 0' }}/>
         <h1 style={{ margin: 0 }}>
-          <Link
-            to="/"
-            style={{
-              color: `white`,
-              textDecoration: `none`,
-            }}
-          >
+          <NavLink to="/">
             {siteTitle}
-          </Link>
+          </NavLink>
         </h1>
+      </div>
+
+      <NavLink to="/blog">Blog</NavLink>
+      <NavLink to="/products">Store</NavLink>
+
+      {/* Shopping Cart Summary */}
+      <div style={{
+              color: 'white',
+              cursor: 'pointer'
+            }} 
+            className="snipcart-summary snipcart-checkout">
+        <div><strong>My Cart</strong></div>
+        <div>
+          <span style={{
+            fontWeight: 'bold'
+          }} className="snipcart-total-items">
+
+          </span>{" "}Items in Cart
+        </div>
+        <div>Total Price{' '}
+          <span style={{
+            fontWeight: 'bold'
+          }} className="snipcart-total-price"></span></div>
       </div>
     </div>
   </header>
